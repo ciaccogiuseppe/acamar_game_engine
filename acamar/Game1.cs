@@ -1,50 +1,56 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Reflection.Metadata.Ecma335;
 
 namespace acamar
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        /*private RenderTarget2D renderTarget;
+        private float scale;*/
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
+
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+
+            graphics.ApplyChanges();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
 
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            //GraphicsDevice.SetRenderTarget(renderTarget);
+            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            spriteBatch.End();
+
+
 
             base.Draw(gameTime);
         }
