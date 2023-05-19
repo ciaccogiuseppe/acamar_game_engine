@@ -68,10 +68,10 @@ namespace acamar.Engine.World.Utilities
             float verticalMidpoint = x + (width / 2f);
             float horizontalMidpoint = y + (height / 2f);
 
-            bool topQuadrant = (body.geometry.position.Y + body.geometry.radius < horizontalMidpoint);
-            bool bottomQuadrant = (body.geometry.position.Y - body.geometry.radius > horizontalMidpoint);
+            bool topQuadrant = (body.geometry.center.Y + body.geometry.radius < horizontalMidpoint);
+            bool bottomQuadrant = (body.geometry.center.Y - body.geometry.radius > horizontalMidpoint);
             // Check if the polygon can completely fit within the left quadrants
-            if (body.geometry.position.X - body.geometry.radius < verticalMidpoint && body.geometry.position.X + body.geometry.radius < verticalMidpoint)
+            if (body.geometry.center.X - body.geometry.radius < verticalMidpoint && body.geometry.center.X + body.geometry.radius < verticalMidpoint)
             {
                 if (topQuadrant)
                     index = 1;
@@ -79,7 +79,7 @@ namespace acamar.Engine.World.Utilities
                     index = 2;
             }
             // Check if the polygon can completely fit within the right quadrants
-            else if (body.geometry.position.X - body.geometry.radius > verticalMidpoint)
+            else if (body.geometry.center.X - body.geometry.radius > verticalMidpoint)
             {
                 if (topQuadrant)
                     index = 0;

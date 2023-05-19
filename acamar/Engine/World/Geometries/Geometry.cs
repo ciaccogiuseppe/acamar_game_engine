@@ -9,8 +9,8 @@ namespace acamar.Engine.World.Geometries
 {
     public abstract class Geometry
     {   
-        public Vector2 position;            // center position
-        public float radius;                // max radius
+        public Vector2 center { get; set; } // center position
+        public float radius { get; set; }   // max radius
         public abstract bool Collides(Geometry other);
     }
 }
