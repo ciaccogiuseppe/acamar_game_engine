@@ -9,21 +9,25 @@ namespace acamar.Engine.World.Physics
     public class PhysicsHandler
     {
         List<PhysicalBody> bodies;
+        CollisionHandler collisionHandler;
+        
 
         public void Update()
         {
             ComputeInteractions();
-            BodiesUpdate();
+            BodiesUpdate();     //apply actual update
         }
 
         public void ComputeInteractions()
         {
-
+            //bodies.ForEach(b => b.Update());            //compute next state without applying it
+            collisionHandler.DetectCollisions(1);
         }
+
 
         public void BodiesUpdate()
         {
-            bodies.ForEach(b => b.Update());
+            bodies.ForEach(b => b.ApplyUpdate());
         }
     }
 }
